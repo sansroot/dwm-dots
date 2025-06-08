@@ -1,0 +1,88 @@
+* {
+    width: 600;
+    font: "Monocraft 14";
+}
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+window {
+    border: 3px;
+    border-color: transparent;
+    background-color: @background;
+    border-radius: 0px;
+    padding: 10px 0 10px 30px;         
+    margin: 0;     
+    font: @font;
+    layout: vertical;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+mainbox {
+    background-color: @background;
+    font: @font;
+    children: [listview];
+
+    /* Centraliza o conteúdo */
+    layout: vertical;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    padding: 0;        
+    margin: 0;          
+}
+
+inputbar, prompt, entry, textbox-prompt-colon {
+    enabled: false;
+}
+
+listview {
+    border: 0;
+    padding: 20px 0;     
+    margin: 0;      
+    columns: 3;
+    lines: 3;
+    spacing: 20px;
+    fixed-height: true;
+    background-color: @background;
+    layout: vertical;
+    cycle: true;
+
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element {
+    orientation: vertical;
+    spacing: 0;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: @background;
+    text-color: transparent;
+    expand: false;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+
+    layout: vertical;
+}
+
+element-icon {
+    size: 96px;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 0;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element-text {
+    enabled: false;
+}
+
+element selected {
+    background-color: @foreground;
+    text-color: @background;
+    border-radius: 15px;
+}
+#element.selected.normal {
+    background-color: @selected-urgent-background;
+}

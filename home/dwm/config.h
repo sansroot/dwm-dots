@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+#include <X11/XF86keysym.h>
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -78,6 +79,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_x,      spawn,          {.v = rofi } },
 	{ MODKEY|ShiftMask,             XK_minus, setgaps,         {.i = -1 } },
+	{ MODKEY, XK_Up,    spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
+	{ MODKEY, XK_Down,  spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
+	{ MODKEY, XK_Left,     spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
 	{ MODKEY|ShiftMask,             XK_equal, setgaps,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },

@@ -2,41 +2,43 @@
 
 [ -x "$HOME/.fehbg" ] && "$HOME/.fehbg"
 picom &
-dte() {
+
+get_volume() {
+  default_sink=$(pactl info | grep 'Default Sink' | awk -F': ' '{print $2}')
+  if [ -z "$default_sink" ]; then
+    echo "n/a"
+    return
+  fi
+
+  mute=$(pactl get-sink-mute "$default_sink" | awk '{print $2}')
+  if [ "$mute" = "yes" ]; then
+    echo "muted"
+  else
+    pactl get-sink-volume "$default_sink" | grep -o '[0-9]\+%' | head -1
+  fi
+}
+
+update_bar() {
   dte="$(date +"%A, %B %d - %H:%M")"
-  echo -e "🕒 $dte"
-}
-
-upd() {
-  upd=$(checkupdates | wc -l)
-  echo -e "📦 $upd updates"
-}
-
-mem() {
-  mem=$(free | awk '/Mem/ {printf "%d MiB/%d MiB\n", $3 / 1024.0, $2 / 1024.0 }')
-  echo -e "🧠 $mem"
-}
-
-cpu() {
-  read cpu a b c previdle rest </proc/stat
-  prevtotal=$((a + b + c + previdle))
-  sleep 0.5
-  read cpu a b c idle rest </proc/stat
-  total=$((a + b + c + idle))
-  cpu=$((100 * ((total - prevtotal) - (idle - previdle)) / (total - prevtotal)))
-  echo -e "🔥 ${cpu}% cpu"
-}
-
-layout() {
   layout=$(setxkbmap -query | awk '/layout:/ {print $2}')
-  echo -e "⌨️  $layout"
+  vol=$(get_volume)
+
+  xsetroot -name " ⌨️ $layout | 🔊 $vol | 🕒 $dte"
 }
 
+# Se chamado com argumento "update_bar", atualiza e sai
+if [ "$1" == "update_bar" ]; then
+  update_bar
+  exit 0
+fi
+
+# Atualização automática da barra
 while true; do
-  xsetroot -name " $(layout) | $(cpu) | $(mem) | $(upd) | $(dte)"
-  sleep 5
+  update_bar
+  sleep 30s
 done &
 
+# Inicia o dwm
 while true; do
   dwm
 done

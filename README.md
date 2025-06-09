@@ -78,7 +78,10 @@ sudo pacman -S fastfetch imagemagick w3m
 ## 2. Dotfiles installation
 #### Paste it in your terminal:
 ```
----
+git clone https://github.com/sansroot/dwm-dots
+cd dwm-dots
+sudo chmod -R 777 .
+./dotfiles_installer.sh
 ```
 ## 3. To help you
 #### LXappearance: 

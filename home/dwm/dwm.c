@@ -2204,11 +2204,11 @@ void load_pywal_colors(void) {
     // ❗️Use os índices que você quiser de 0 a 15:
     colors[SchemeNorm][ColFg]     = strdup(color_lines[7]);  // Exemplo: texto da não focada
     colors[SchemeNorm][ColBg]     = strdup(color_lines[0]);  // fundo da não focada
-    colors[SchemeNorm][ColBorder] = strdup(color_lines[5]);  // borda da não focada
+    colors[SchemeNorm][ColBorder] = strdup(color_lines[0]);  // borda da não focada
 
-    colors[SchemeSel][ColFg]      = strdup(color_lines[0]);  // texto da focada
-    colors[SchemeSel][ColBg]      = strdup(color_lines[4]);  // fundo da focada
-    colors[SchemeSel][ColBorder]  = strdup(color_lines[14]); // borda da focada
+    colors[SchemeSel][ColFg]      = strdup(color_lines[5]);  // texto da focada
+    colors[SchemeSel][ColBg]      = strdup(color_lines[0]);  // fundo da focada
+    colors[SchemeSel][ColBorder]  = strdup(color_lines[5]); // borda da focada
 
     // (opcional) liberar as strings copiadas
     for (int i = 0; i < total_lines; i++) {

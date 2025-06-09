@@ -73,9 +73,9 @@ sudo pacman -S fastfetch imagemagick w3m
 ---
 ```
 ## 3. To help you
-#### Nwg-look: 
+#### LXappearance: 
 ```
-sudo pacman -S nwg-look
+sudo pacman -S lxappearance
 ```
 #### Apple Keyboard native path to configure key layout: 
 ```

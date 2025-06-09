@@ -51,10 +51,6 @@ sudo pacman -S alacritty
 ```
 sudo pacman -S awesome-terminal-fonts otf-font-awesome ttf-font-awesome ttf-jetbrains-mono ttf-jetbrains-mono-nerd 
 ```
-#### Fastfetch: 
-```
-sudo pacman -S fastfetch imagemagick w3m
-```
 #### Oh-my-ZSH: 
 
 <a>https://github.com/ohmyzsh/ohmyzsh</a>

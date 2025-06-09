@@ -19,7 +19,7 @@ sudo make clean install
 ```
 yay -S papirus-folders-catppuccin-git
 ```
-#### Papirus Icons
+#### Pywal
 ```
 yay -S pyton-pywal16
 ```

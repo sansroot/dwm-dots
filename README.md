@@ -68,9 +68,13 @@ sudo pacman -S awesome-terminal-fonts otf-font-awesome ttf-font-awesome ttf-jetb
   sudo pacman -S rofi
   ```
 #### Rofi fonts:
-
-  <a>https://github.com/adi1090x/rofi</a>
-
+```
+git clone --depth=1 https://github.com/adi1090x/rofi.git
+cd rofi
+sudo chmod +x setup.sh
+./setup.sh
+rm -rf ~/.config/rofi
+```
 ## 2. Dotfiles installation
 #### Paste it in your terminal:
 ```

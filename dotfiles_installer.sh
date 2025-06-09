@@ -20,7 +20,7 @@ gsettings set org.gnome.desktop.interface cursor-theme "dwm-dots" &> /dev/null
 papirus-folders -C grey &> /dev/null
 clear
 echo "*****************************"
-echo "Now, we are gonna compile DWM!"
+echo "Now, we're gonna compile DWM!"
 echo "*****************************"
 sleep 3
 clear
@@ -30,13 +30,20 @@ echo "**************************************************************************
 sleep 5
 echo "******************************************************"
 echo "Open the wallpaper selector pressing Alt + C!"
-echo "Open Alacritty terminal pressing Alt + Enter!"
+echo "Open ST terminal pressing Alt + Enter!"
 echo "Open Rofi app menu pressing Alt + X!"
 echo "Open Rofi power menu pressing Alt + Z!"
 echo "******************************************************"
 sleep 8
 clear
-cd ..
-rm -rf dwm-dots
 cd ~/dwm
 sudo make clean install
+clear
+echo "*****************************"
+echo "Now, we're gonna compile ST!"
+echo "*****************************"
+sleep 3
+clear
+cd ~/st
+sudo make clean install
+

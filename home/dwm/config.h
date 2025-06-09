@@ -69,7 +69,7 @@ static const char *dmenucmd[] = {
   "-nb", "#1e1e2e", "-nf", "#cdd6f4",
   "-sb", "#89b4fa", "-sf", "#1e1e2e", NULL
 };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *rofi[] = { "rofi", "-show", "drun", NULL };
 static const char *pywal[] = { "bash", "-c", "$HOME/Documents/wallpaper/rofi-wallpaper-selector.sh", NULL };
 static const char *powermenu[] = { "bash", "-c", "$HOME/.config/rofi/powermenu.sh", NULL };

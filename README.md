@@ -94,6 +94,10 @@ sudo chmod -R 777 .
 ```
 sudo pacman -S lxappearance
 ```
+#### Nwg-Look: 
+```
+sudo pacman -S nwg-look
+```
 #### Apple Keyboard native path to configure key layout: 
 ```
 /sys/bus/hid/drivers/apple/module/parameters

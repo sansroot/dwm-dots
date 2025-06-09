@@ -2,7 +2,7 @@
 
 xset m 0 0
 [ -x "$HOME/.fehbg" ] && "$HOME/.fehbg"
-picom &
+picom -b &
 
 get_volume() {
   default_sink=$(pactl info | grep 'Default Sink' | awk -F': ' '{print $2}')

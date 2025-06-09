@@ -46,7 +46,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "[M]",      NULL },
 };
 
 /* key definitions */
@@ -79,9 +79,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_x,      spawn,          {.v = rofi } },
 	{ MODKEY|ShiftMask,             XK_minus, setgaps,         {.i = -1 } },
-	{ MODKEY, XK_Up,    spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
-	{ MODKEY, XK_Down,  spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
-	{ MODKEY, XK_Left,     spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
+	{ MODKEY, XK_Up,                           spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
+	{ MODKEY, XK_Down,                         spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
+	{ MODKEY, XK_Left,                         spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
 	{ MODKEY|ShiftMask,             XK_equal, setgaps,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },
@@ -99,10 +99,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	//{ Mod4Mask,                   XK_f,      setlayout,      {.v = &layouts[1]} },
+	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_f,      togglefloating, {0} },
 
 	/* Novo atalho: Ctrl + Space para alternar layout do teclado */
 	{ ControlMask,                  XK_space,  spawn,          SHCMD("bash -c 'setxkbmap -query | grep -q \"layout:\\\s*us\" && setxkbmap br || setxkbmap us'") },

@@ -105,7 +105,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      togglefloating, {0} },
 
 	/* Novo atalho: Ctrl + Space para alternar layout do teclado */
-	{ ControlMask,                  XK_space,  spawn,          SHCMD("bash -c 'setxkbmap -query | grep -q \"layout:\\\s*us\" && setxkbmap br || setxkbmap us'") },
+	{ ControlMask, XK_space, spawn, SHCMD("bash -c 'setxkbmap -query | grep -q \"layout:\\\\s*us\" && setxkbmap br || setxkbmap us; ~/.xinitrc update_bar &'") },
+
 
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },

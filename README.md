@@ -9,9 +9,12 @@
 
 **You will have to manually install the dependencies**
 
-#### DWM
+#### DWM (optional)
 ```
 git clone https://git.suckless.org/dwm
+cd dwm
+sudo make clean install
+
 ```
 #### Papirus Icons
 ```

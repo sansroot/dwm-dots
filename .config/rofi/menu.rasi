@@ -12,7 +12,7 @@ element-text, element-icon, mode-switcher {
 }
 
 window {
-    border: 3px;
+    border: 0px;
     border-color: transparent;
     background-color: @background;
     border-radius: 0px;

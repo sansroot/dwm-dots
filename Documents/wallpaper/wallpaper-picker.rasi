@@ -6,7 +6,7 @@
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
-    border: 3px;
+    border: 0px;
     border-color: transparent;
     background-color: @background;
     border-radius: 0px;

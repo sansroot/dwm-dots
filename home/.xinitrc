@@ -24,7 +24,7 @@ update_bar() {
   layout=$(setxkbmap -query | awk '/layout:/ {print $2}')
   vol=$(get_volume)
 
-  xsetroot -name " ⌨️ $layout | 🔊 $vol | 🕒 $dte"
+  xsetroot -name " ⌨️ $layout | 🔊 $vol | 🕒 $dte "
 }
 
 if [ "$1" == "update_bar" ]; then

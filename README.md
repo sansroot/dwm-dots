@@ -29,9 +29,9 @@ yay -S papirus-folders-catppuccin-git
 ```
 yay -S pyton-pywal16
 ```
-#### I3lock
+#### Slock
 ```
-sudo pacman -S i3lock
+sudo pacman -S Slock
 ```
 #### Picom
 ```

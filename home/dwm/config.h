@@ -74,7 +74,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *rofi[] = { "rofi", "-show", "drun", NULL };
 static const char *pywal[] = { "bash", "-c", "$HOME/Documents/wallpaper/rofi-wallpaper-selector.sh", NULL };
 static const char *powermenu[] = { "bash", "-c", "$HOME/.config/rofi/powermenu.sh", NULL };
-static const char *i3lock[] = { "i3lock", NULL };
+static const char *slock[] = { "slock", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -87,7 +87,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = powermenu } },
-	{ Mod4Mask,                     XK_l,      spawn,          {.v = i3lock } },
+	{ Mod4Mask,                     XK_l,      spawn,          {.v = slock } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

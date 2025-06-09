@@ -24,13 +24,17 @@ echo "Now, we're gonna compile DWM!"
 echo "*****************************"
 sleep 3
 clear
+echo "***************************************************************************************"
+echo "When it finishes, kill X session by typing "pkill x" and then "startx" to start it again!"
+echo "***************************************************************************************"
+sleep 5
 echo "******************************************************"
 echo "Open the wallpaper selector pressing Alt + C!"
 echo "Open ST terminal pressing Alt + Enter!"
 echo "Open Rofi app menu pressing Alt + X!"
 echo "Open Rofi power menu pressing Alt + Z!"
 echo "******************************************************"
-sleep 5
+sleep 8
 clear
 cd ~/dwm
 sudo make clean install

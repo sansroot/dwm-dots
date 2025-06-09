@@ -84,6 +84,8 @@ static const Key keys[] = {
 	{ MODKEY, XK_Up,                           spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
 	{ MODKEY, XK_Down,                         spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
 	{ MODKEY, XK_Left,                         spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
+	{ MODKEY, XK_k,                         spawn, SHCMD("killall picom") },
+	{ MODKEY, XK_j,                         spawn, SHCMD("picom -b") },
 	{ MODKEY|ShiftMask,             XK_equal, setgaps,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },

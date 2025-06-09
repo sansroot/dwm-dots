@@ -44,7 +44,7 @@
 
 #include "drw.h"
 #include "util.h"
-static int gappx = 10; /* default gap size */
+//static int gappx = 10; /* default gap size */
 void load_pywal_colors(void);
 
 

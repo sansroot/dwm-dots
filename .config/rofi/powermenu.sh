@@ -90,11 +90,13 @@ case ${chosen} in
 		run_cmd
 		hyprlock
 		i3lock
+		slock
         ;;
     $suspend)
 		run_cmd --suspend
 		hyprlock
 		i3lock
+		slock
         ;;
     $logout)
 		run_cmd --logout

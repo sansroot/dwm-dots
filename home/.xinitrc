@@ -26,19 +26,16 @@ update_bar() {
   xsetroot -name " ⌨️ $layout | 🔊 $vol | 🕒 $dte"
 }
 
-# Se chamado com argumento "update_bar", atualiza e sai
 if [ "$1" == "update_bar" ]; then
   update_bar
   exit 0
 fi
 
-# Atualização automática da barra
 while true; do
   update_bar
   sleep 30s
 done &
 
-# Inicia o dwm
 while true; do
   dwm
 done

@@ -1,0 +1,87 @@
+--- a/config.h
++++ b/config.h
+@@ -1,7 +1,17 @@
+ /* See LICENSE file for copyright and license details. */
+
+ /* appearance */
++#include <X11/XF86keysym.h>
+ static const unsigned int snap      = 32;       /* snap pixel */
+ static const int showbar            = 1;        /* 0 means no bar */
+ static const int topbar             = 1;        /* 0 means bottom bar */
+-static const char col_gray1[]       = "#222222";
+-static const char col_gray2[]       = "#444444";
+-static const char col_gray3[]       = "#bbbbbb";
+-static const char col_gray4[]       = "#eeeeee";
+-static const char col_cyan[]        = "#005577";
++static const char norm_fg[] = "";
++static const char norm_bg[] = "";
++static const char norm_border[] = "";
++
++static const char sel_fg[] = "";
++static const char sel_bg[] = "";
++static const char sel_border[] = "";
++
+ static const char *colors[][3]      = {
+-	/*               fg         bg         border   */
+-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
++    /*               fg           bg         border                         */
++    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
++    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+ };
+--- a/dwm.c
++++ b/dwm.c
+@@ -43,6 +43,8 @@
+ #include "drw.h"
+ #include "util.h"
+
++void load_pywal_colors(void);
++
+ /* macros */
+ #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
+@@
++/* pywal color loading */
++#define MAX_COLORS 16
++
++void load_pywal_colors(void) {
++    FILE *fp;
++    char path[128];
++    char line[16];
++    char *color_lines[MAX_COLORS] = {0};
++    int total_lines = 0;
++
++    snprintf(path, sizeof(path), "%s/.cache/wal/colors", getenv("HOME"));
++    fp = fopen(path, "r");
++    if (!fp) {
++        fprintf(stderr, "dwm: failed to open pywal colors file\n");
++        return;
++    }
++
++    while (fgets(line, sizeof(line), fp) && total_lines < MAX_COLORS) {
++        line[strcspn(line, "\n")] = 0; // remove \n
++        color_lines[total_lines++] = strdup(line); // guarda linha
++    }
++
++    fclose(fp);
++
++    colors[SchemeNorm][ColFg]     = strdup(color_lines[7]);
++    colors[SchemeNorm][ColBg]     = strdup(color_lines[0]);
++    colors[SchemeNorm][ColBorder] = strdup(color_lines[0]);
++
++    colors[SchemeSel][ColFg]      = strdup(color_lines[5]);
++    colors[SchemeSel][ColBg]      = strdup(color_lines[0]);
++    colors[SchemeSel][ColBorder]  = strdup(color_lines[5]);
++
++    for (int i = 0; i < total_lines; i++) {
++        if (color_lines[i])
++            free(color_lines[i]);
++    }
++}
++
+@@ int
+ main(int argc, char *argv[])
+ {
++    load_pywal_colors();
+     if (argc == 2 && !strcmp("-v", argv[1]))
+         die("dwm-"VERSION);
+     else if (argc != 1)

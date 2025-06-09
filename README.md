@@ -9,7 +9,7 @@
 
 **You will have to manually install the dependencies**
 
-#### DWM (optional)
+#### DWM (optional as it will be installed running the dotfiles_installer.sh)
 ```
 git clone https://git.suckless.org/dwm
 cd dwm

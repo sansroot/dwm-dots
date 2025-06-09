@@ -17,10 +17,9 @@ static const char sel_border[] = "";
 
 static const char *colors[][3]      = {
     /*               fg           bg         border                         */
-    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeNorm] = { norm_fg,     norm_fg,   norm_border }, // unfocused wins
     [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
 };
-
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -57,8 +56,6 @@ static const Layout layouts[] = {
 #define TAGKEYS_SUPER(KEY,TAG) \
 	{ Mod4Mask,                     KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ Mod4Mask|ControlMask,         KEY,      toggletag,      {.ui = 1 << TAG} },
-
-
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -98,13 +95,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+
+	/* Novo atalho: Ctrl + Space para alternar layout do teclado */
+	{ ControlMask,                  XK_space,  spawn,          SHCMD("bash -c 'setxkbmap -query | grep -q \"layout:\\\s*us\" && setxkbmap br || setxkbmap us'") },
+
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-// Alt para navegar
 	TAGKEYS(XK_1, 0)
 	TAGKEYS(XK_2, 1)
 	TAGKEYS(XK_3, 2)
@@ -114,8 +114,6 @@ static const Key keys[] = {
 	TAGKEYS(XK_7, 6)
 	TAGKEYS(XK_8, 7)
 	TAGKEYS(XK_9, 8)
-	
-	// Super para mover janelas
 	TAGKEYS_SUPER(XK_1, 0)
 	TAGKEYS_SUPER(XK_2, 1)
 	TAGKEYS_SUPER(XK_3, 2)
@@ -125,7 +123,6 @@ static const Key keys[] = {
 	TAGKEYS_SUPER(XK_7, 6)
 	TAGKEYS_SUPER(XK_8, 7)
 	TAGKEYS_SUPER(XK_9, 8)
-	
 	{ Mod4Mask,             XK_m,      quit,           {0} },
 };
 
@@ -145,4 +142,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-

@@ -2142,12 +2142,15 @@ zoom(const Arg *arg)
 	pop(c);
 }
 
-void
-load_pywal_colors(void) {
+
+#define MAX_COLORS 16
+
+void load_pywal_colors(void) {
     FILE *fp;
     char path[128];
     char line[16];
-    int i = 0;
+    char *color_lines[MAX_COLORS] = {0};
+    int total_lines = 0;
 
     snprintf(path, sizeof(path), "%s/.cache/wal/colors", getenv("HOME"));
     fp = fopen(path, "r");
@@ -2156,23 +2159,29 @@ load_pywal_colors(void) {
         return;
     }
 
-    while (fgets(line, sizeof(line), fp) && i < 6) {
-        line[strcspn(line, "\n")] = 0;
-
-        switch (i) {
-        case 0: colors[SchemeNorm][ColFg]     = strdup(line); break;
-        case 1: colors[SchemeNorm][ColBg]     = strdup(line); break;
-        case 2: colors[SchemeNorm][ColBorder] = strdup(line); break;
-        case 3: colors[SchemeSel][ColFg]      = strdup(line); break;
-        case 4: colors[SchemeSel][ColBg]      = strdup(line); break;
-        case 5: colors[SchemeSel][ColBorder]  = strdup(line); break;
-        }
-
-        i++;
+    while (fgets(line, sizeof(line), fp) && total_lines < MAX_COLORS) {
+        line[strcspn(line, "\n")] = 0; // remove \n
+        color_lines[total_lines++] = strdup(line); // guarda linha
     }
 
     fclose(fp);
+
+    // ❗️Use os índices que você quiser de 0 a 15:
+    colors[SchemeNorm][ColFg]     = strdup(color_lines[7]);  // Exemplo: texto da não focada
+    colors[SchemeNorm][ColBg]     = strdup(color_lines[0]);  // fundo da não focada
+    colors[SchemeNorm][ColBorder] = strdup(color_lines[5]);  // borda da não focada
+
+    colors[SchemeSel][ColFg]      = strdup(color_lines[0]);  // texto da focada
+    colors[SchemeSel][ColBg]      = strdup(color_lines[4]);  // fundo da focada
+    colors[SchemeSel][ColBorder]  = strdup(color_lines[14]); // borda da focada
+
+    // (opcional) liberar as strings copiadas
+    for (int i = 0; i < total_lines; i++) {
+        if (color_lines[i])
+            free(color_lines[i]);
+    }
 }
+
 
 
 int

@@ -15,6 +15,12 @@ git clone https://git.suckless.org/dwm
 cd dwm
 sudo make clean install
 ```
+#### ST (optional as it will be installed running the dotfiles_installer.sh)
+```
+git clone https://git.suckless.org/st
+cd st
+sudo make clean install
+```
 #### Papirus Icons
 ```
 yay -S papirus-folders-catppuccin-git

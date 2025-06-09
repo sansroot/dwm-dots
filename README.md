@@ -23,6 +23,10 @@ yay -S papirus-folders-catppuccin-git
 ```
 yay -S pyton-pywal16
 ```
+#### Picom
+```
+sudo pacman -S picom
+```
 #### Xorg-xsetroot
 ```
 sudo pacman -S xorg-xsetroot

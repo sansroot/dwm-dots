@@ -2,7 +2,6 @@
 
 [ -x "$HOME/.fehbg" ] && "$HOME/.fehbg"
 picom &
-# loop do relógio em segundo plano
 dte() {
   dte="$(date +"%A, %B %d - %H:%M")"
   echo -e "🕒 $dte"
@@ -33,13 +32,11 @@ layout() {
   echo -e "⌨️  $layout"
 }
 
-# Loop da barra do dwm (em segundo plano)
 while true; do
   xsetroot -name " $(layout) | $(cpu) | $(mem) | $(upd) | $(dte)"
   sleep 5
 done &
 
-# Loop principal do dwm (em primeiro plano)
 while true; do
   dwm
 done

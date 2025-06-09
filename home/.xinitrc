@@ -1,5 +1,6 @@
 #!/bin/bash
 
+xset m 0 0
 [ -x "$HOME/.fehbg" ] && "$HOME/.fehbg"
 picom &
 

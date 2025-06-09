@@ -3,4 +3,5 @@
 while true; do
     dwm
 done
+xsetroot -name "$(date)"
 

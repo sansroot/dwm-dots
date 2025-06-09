@@ -61,7 +61,7 @@ sudo pacman -S fastfetch imagemagick w3m
 ## Rofi
 #### Rofi:
   ```
-  sudo pacman -S rofi-wayland 
+  sudo pacman -S rofi
   ```
 #### Rofi fonts:
 

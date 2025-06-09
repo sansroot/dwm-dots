@@ -28,10 +28,13 @@ echo "**************************************************************************
 echo "When it finishes, kill X session by typing "pkill x" and then "startx" to start it again!"
 echo "***************************************************************************************"
 sleep 5
-echo "********"
-echo "Bye! :)"
-echo "********"
-sleep 1
+echo "******************************************************"
+echo "Open the wallpaper selector pressing Alt + C!"
+echo "Open Alacritty terminal pressing Alt + Enter!"
+echo "Open Rofi app menu pressing Alt + X!"
+echo "Open Rofi power menu pressing Alt + Z!"
+echo "******************************************************"
+sleep 8
 clear
 cd ..
 rm -rf dwm-dots

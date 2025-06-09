@@ -77,6 +77,9 @@ static const char *i3lock[] = { "i3lock", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_x,      spawn,          {.v = rofi } },
+	{ MODKEY|ShiftMask,             XK_minus, setgaps,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_equal, setgaps,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = powermenu } },
 	{ Mod4Mask,                     XK_l,      spawn,          {.v = i3lock } },

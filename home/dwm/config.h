@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
 /* appearance */
 #include <X11/XF86keysym.h>
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -8,16 +6,14 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "Monocraft:size=10" };
-static const char dmenufont[]       = "Monocraft:size=10";
+static const char *fonts[]          = {"Monocraft:size=10"};
+static const char dmenufont[]       =  "Monocraft:size=10";
 static const char norm_fg[] = "";
 static const char norm_bg[] = "";
 static const char norm_border[] = "";
-
 static const char sel_fg[] = "";
 static const char sel_bg[] = "";
 static const char sel_border[] = "";
-
 static const char *colors[][3]      = {
     /*               fg           bg         border                         */
     [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
@@ -25,7 +21,6 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *tags[] = {"󰲠", "󰲢", "󰲤", "󰲦", "󰲨"};
 static const unsigned int ulinepad	= 0.1;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
@@ -48,9 +43,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
-	{ "",      NULL },    /* no layout function means floating behavior */
+	{ "",      tile },    
+	{ "",      NULL },    
 	{ "",      NULL },
 };
 
@@ -59,7 +53,6 @@ static const Layout layouts[] = {
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} },
-
 #define TAGKEYS_SUPER(KEY,TAG) \
 	{ Mod4Mask,                     KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ Mod4Mask|ControlMask,         KEY,      toggletag,      {.ui = 1 << TAG} },
@@ -69,28 +62,29 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {
-  "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-  "-nb", "#1e1e2e", "-nf", "#cdd6f4",
-  "-sb", "#89b4fa", "-sf", "#1e1e2e", NULL
-};
 static const char *termcmd[]  = { "st", NULL };
 static const char *rofi[] = { "rofi", "-show", "drun", NULL };
 static const char *pywal[] = { "bash", "-c", "$HOME/Documents/wallpaper/rofi-wallpaper-selector.sh", NULL };
 static const char *powermenu[] = { "bash", "-c", "$HOME/.config/rofi/powermenu.sh", NULL };
 static const char *slock[] = { "slock", NULL };
+static const char *dmenucmd[] = {
+  "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
+  "-nb", "#1e1e2e", "-nf", "#cdd6f4",
+  "-sb", "#89b4fa", "-sf", "#1e1e2e", NULL
+};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_x,      spawn,          {.v = rofi } },
-	{ MODKEY|ShiftMask,             XK_minus, setgaps,         {.i = -1 } },
-	{ Mod4Mask, XK_Up,                           spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
-	{ Mod4Mask, XK_Down,                         spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
-	{ Mod4Mask, XK_Left,                         spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
-	{ Mod4Mask, XK_k,                         spawn, SHCMD("killall picom") },
-	{ Mod4Mask, XK_j,                         spawn, SHCMD("picom -b") },
-	{ MODKEY|ShiftMask,             XK_equal, setgaps,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
+	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = -1 } },
+	{ Mod4Mask,                     XK_Up,     spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
+	{ Mod4Mask,                     XK_Down,   spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
+	{ Mod4Mask,                     XK_Left,   spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
+	{ Mod4Mask,                     XK_k,      spawn,          SHCMD("killall picom") },
+	{ Mod4Mask,                     XK_j,      spawn,          SHCMD("picom -b") },
+	{ MODKEY, XK_e,                            spawn,          SHCMD("thunar") },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_0,      setgaps,        {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = powermenu } },
 	{ Mod4Mask,                     XK_l,      spawn,          {.v = slock } },
@@ -99,7 +93,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_a,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	//{ MODKEY,                     XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -107,20 +101,17 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	//{ Mod4Mask,                   XK_f,      setlayout,      {.v = &layouts[1]} },
-	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	//{ MODKEY,                       XK_space,  setlayout,      {0} },
+	//{ MODKEY,                     XK_m,      setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                     XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_f,      togglefloating, {0} },
-
-	/* Novo atalho: Ctrl + Space para alternar layout do teclado */
-	{ ControlMask, XK_space, spawn, SHCMD("bash -c 'setxkbmap -query | grep -q \"layout:\\\\s*us\" && setxkbmap br || setxkbmap us; ~/.xinitrc update_bar &'") },
-
-
+	{ ControlMask,                  XK_space,  spawn,          SHCMD("bash -c 'setxkbmap -query | grep -q \"layout:\\\\s*us\" && setxkbmap br || setxkbmap us; ~/.xinitrc update_bar &'") },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ Mod4Mask,                     XK_m,      quit,           {0} },
 	TAGKEYS(XK_1, 0)
 	TAGKEYS(XK_2, 1)
 	TAGKEYS(XK_3, 2)
@@ -139,7 +130,6 @@ static const Key keys[] = {
 	TAGKEYS_SUPER(XK_7, 6)
 	TAGKEYS_SUPER(XK_8, 7)
 	TAGKEYS_SUPER(XK_9, 8)
-	{ MODKEY,             XK_m,      quit,           {0} },
 };
 
 /* button definitions */

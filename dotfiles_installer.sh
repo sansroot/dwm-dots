@@ -5,6 +5,7 @@ cp -r .config/* -t ~/.config/
 cp -r Documents/* -t ~/Documents/
 cp -r Pictures/* -t ~/Pictures/
 cp -r home/* -t ~/
+cp -r home/.zshrc home/.fehbg home/.p10k.zsh home/.xinitrc -t ~/
 sudo cp -r ./font/Monocraft* -t /usr/share/fonts/
 sudo cp -r ./cursor/* -t /usr/share/icons/
 sudo cp -r ./gtkthemes/* -t /usr/share/themes/

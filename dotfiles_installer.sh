@@ -25,10 +25,6 @@ echo "Now, we're gonna compile DWM!"
 echo "*****************************"
 sleep 3
 clear
-echo "***************************************************************************************"
-echo "When it finishes, kill X session by typing "pkill x" and then "startx" to start it again!"
-echo "***************************************************************************************"
-sleep 5
 echo "******************************************************"
 echo "Open the wallpaper selector pressing Alt + C!"
 echo "Open ST terminal pressing Alt + Enter!"
@@ -47,4 +43,11 @@ sleep 3
 clear
 cd ~/st
 sudo make clean install
+clear
+echo "*************************************************************************************************"
+echo "Now, i'm gonna kill your X session and you can relog-in using xinit option in your login manager"
+echo "or type startx if you don't have a login manager"
+echo "*************************************************************************************************"
+sleep 9
+pkill x
 

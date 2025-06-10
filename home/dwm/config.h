@@ -84,11 +84,11 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_x,      spawn,          {.v = rofi } },
 	{ MODKEY|ShiftMask,             XK_minus, setgaps,         {.i = -1 } },
-	{ MODKEY, XK_Up,                           spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
-	{ MODKEY, XK_Down,                         spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
-	{ MODKEY, XK_Left,                         spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
-	{ MODKEY, XK_k,                         spawn, SHCMD("killall picom") },
-	{ MODKEY, XK_j,                         spawn, SHCMD("picom -b") },
+	{ Mod4Mask, XK_Up,                           spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.xinitrc update_bar") },
+	{ Mod4Mask, XK_Down,                         spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
+	{ Mod4Mask, XK_Left,                         spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
+	{ Mod4Mask, XK_k,                         spawn, SHCMD("killall picom") },
+	{ Mod4Mask, XK_j,                         spawn, SHCMD("picom -b") },
 	{ MODKEY|ShiftMask,             XK_equal, setgaps,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_0,     setgaps,         {.i = 0  } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = pywal } },
@@ -96,10 +96,10 @@ static const Key keys[] = {
 	{ Mod4Mask,                     XK_l,      spawn,          {.v = slock } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_a,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_d,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -139,7 +139,7 @@ static const Key keys[] = {
 	TAGKEYS_SUPER(XK_7, 6)
 	TAGKEYS_SUPER(XK_8, 7)
 	TAGKEYS_SUPER(XK_9, 8)
-	{ Mod4Mask,             XK_m,      quit,           {0} },
+	{ MODKEY,             XK_m,      quit,           {0} },
 };
 
 /* button definitions */

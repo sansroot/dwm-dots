@@ -10,7 +10,7 @@
 **You will have to manually install the dependencies**
 
 ### Wallpapers
-#### You can download or place this repo on your ~/Pictures
+#### You can download or place the repo below on your ~/Pictures
 <a>https://github.com/sansroot/wallpaper</a>
 
 #### DWM (optional as it will be installed running the dotfiles_installer.sh)

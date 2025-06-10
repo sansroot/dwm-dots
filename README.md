@@ -53,10 +53,6 @@ sudo pacman -S zsh
 ```
 sudo pacman -S feh
 ```
-#### Alacritty: 
-```
-sudo pacman -S alacritty
-```
 #### Nerd-fonts and Awesome-fonts: 
 ```
 sudo pacman -S awesome-terminal-fonts otf-font-awesome ttf-font-awesome ttf-jetbrains-mono ttf-jetbrains-mono-nerd 

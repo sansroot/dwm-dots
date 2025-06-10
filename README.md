@@ -35,7 +35,7 @@ sudo pacman -S Slock
 ```
 #### Picom
 ```
-sudo pacman -S picom
+yay -S picom-ftlabs-git
 ```
 #### Xorg-xsetroot
 ```

@@ -35,7 +35,7 @@ yay -S pyton-pywal16
 ```
 #### Slock
 ```
-sudo pacman -S Slock
+sudo pacman -S slock
 ```
 #### Picom
 ```

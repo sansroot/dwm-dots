@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+xset m 0 0
 cp -r .config/* -t ~/.config/
 cp -r Documents/* -t ~/Documents/
 cp -r Pictures/* -t ~/Pictures/

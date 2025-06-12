@@ -50,5 +50,5 @@ echo "Now, i'm gonna kill your X session and you can relog-in using xinit option
 echo "or type startx if you don't have a login manager"
 echo "*************************************************************************************************"
 sleep 9
-pkill x
+sudo chmod 777 ~/.xinitrc
 

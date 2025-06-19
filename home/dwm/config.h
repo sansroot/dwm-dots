@@ -81,6 +81,7 @@ static const Key keys[] = {
 	{ Mod4Mask,                     XK_Down,   spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.xinitrc update_bar") },
 	{ Mod4Mask,                     XK_Left,   spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.xinitrc update_bar") },
 	{ Mod4Mask,                     XK_k,      spawn,          SHCMD("killall picom") },
+	{ Mod4Mask,             XK_f,      togglefullscr,  {0} },
 	{ Mod4Mask,                     XK_j,      spawn,          SHCMD("picom -b") },
 	{ MODKEY, XK_e,                            spawn,          SHCMD("thunar") },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +1 } },

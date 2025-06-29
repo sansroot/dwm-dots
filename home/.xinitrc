@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xset m 0 0
 [ -x "$HOME/.fehbg" ] && "$HOME/.fehbg"
 picom -b &
 
@@ -39,4 +38,5 @@ done &
 
 while true; do
   dwm
+  xset m 0 0
 done
